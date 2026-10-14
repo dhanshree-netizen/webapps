@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="rescueApp">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>RescueConnect</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.8.2/angular.min.js"></script>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: #eef3f8;
+            margin: 0;
+            padding: 25px;
+            color: #243447;
+        }
+        .box {
+            max-width: 850px;
+            margin: 25px auto;
+            background: white;
+            padding: 25px;
+            border-radius: 10px;
+            box-shadow: 0 2px 12px #00000012;
+        }
+        h1, h2, h3 { color: #245a91; }
+        input, select {
+            width: 100%;
+            box-sizing: border-box;
+            margin: 6px 0;
+            padding: 10px;
+            border: 1px solid #cbd5e1;
+            border-radius: 5px;
+        }
+        button {
+            margin: 5px 4px 5px 0;
+            padding: 10px 15px;
+            border: 0;
+            border-radius: 5px;
+            background: #245a91;
+            color: white;
+            cursor: pointer;
+        }
+        button.secondary { background: #64748b; }
+        button.danger { background: #b42318; }
+        table {
+            width: 100%;
+            margin-top: 20px;
+            border-collapse: collapse;
+        }
+        th, td {
+            border: 1px solid #d5dde7;
+            padding: 10px;
+            text-align: left;
+        }
+        th { background: #e7f0fa; }
+        .error { color: #b42318; }
+        .success { color: #137333; }
+        .status {
+            background: #f1f5f9;
+            padding: 10px;
+            border-radius: 5px;
+        }
+        .empty { color: #64748b; padding: 12px 0; }
+        @media (max-width: 600px) {
+            body { padding: 8px; }
+            .box { padding: 14px; }
+            table { font-size: 13px; }
+            th, td { padding: 6px; }
+        }
+    </style>
+</head>
+<body ng-controller="MainController">
+<div class="box">
+    <div ng-show="page === 'login'">
+        <h1>RescueConnect</h1>
+        <h2>Login</h2>
+        <form ng-submit="login()">
+            <input type="text" ng-model="username" placeholder="Username" required>
+            <input type="password" ng-model="password" placeholder="Password" required>
+            <button type="submit">Login</button>
+        </form>
+        <p class="error" ng-if="error">Wrong username or password</p>
+        <p>Username: admin<br>Password: 1234</p>
+    </div>
+
+    <div ng-show="page === 'volunteers'">
+        <rescue-title></rescue-title>
+        <h2>Volunteer Management — CRUD Operations</h2>
+        <button class="secondary" ng-click="logout()">Logout</button>
+        <button class="secondary" ng-click="loadVolunteers()">Refresh List</button>
+        <p class="status">Storage mode: <strong>{{mode}}</strong></p>
+        <p class="success" ng-if="message">{{message}}</p>
+        <p class="error" ng-if="errorMessage">{{errorMessage}}</p>
+
+        <h3>{{editingId ? 'Update Volunteer' : 'Add Volunteer'}}</h3>
+        <form ng-submit="editingId ? updateVolunteer() : addVolunteer()">
+            <input type="text" ng-model="newVolunteer.name" placeholder="Name" required>
+            <input type="text" ng-model="newVolunteer.city" placeholder="City" required>
+            <select ng-model="newVolunteer.experience" required>
+                <option value="">Select Experience</option>
+                <option value="Beginner">Beginner</option>
+                <option value="Experienced">Experienced</option>
+            </select>
+            <button type="submit">{{editingId ? 'Update Volunteer' : 'Add Volunteer'}}</button>
+            <button type="button" class="secondary" ng-if="editingId" ng-click="cancelEdit()">Cancel</button>
+        </form>
+
+        <h3>Volunteer List</h3>
+        <input type="text" ng-model="search" placeholder="Search volunteer">
+        <p class="empty" ng-if="(volunteers | filter:search).length === 0">No volunteers found.</p>
+        <table ng-if="(volunteers | filter:search).length > 0">
+            <thead>
+                <tr>
+                    <th>Name</th>
+                    <th>City</th>
+                    <th>Experience</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr ng-repeat="v in volunteers | filter:search">
+                    <td>{{v.name}}</td>
+                    <td>{{v.city}}</td>
+                    <td>{{v.experience}}</td>
+                    <td>
+                        <button ng-click="editVolunteer(v)">Edit</button>
+                        <button class="danger" ng-click="deleteVolunteer(v._id)">Delete</button>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
+<script src="app.js"></script>
+</body>
+</html>

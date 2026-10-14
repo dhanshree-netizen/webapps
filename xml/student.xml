@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE students SYSTEM "student.dtd">
+<?xml-stylesheet type="text/xsl" href="student.xsl"?>
+
+<students>
+    <student>
+        <name>Anu</name>
+        <department>IT</department>
+        <year>3</year>
+    </student>
+
+    <student>
+        <name>Banu</name>
+        <department>CSE</department>
+        <year>3</year>
+    </student>
+</students>

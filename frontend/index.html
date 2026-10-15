@@ -66,6 +66,22 @@
             table { font-size: 13px; }
             th, td { padding: 6px; }
         }
+        
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(15px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.box {
+    animation: fadeIn 0.8s ease-in-out;
+}
+
     </style>
 </head>
 <body ng-controller="MainController">
@@ -82,7 +98,9 @@
         <p>Username: admin<br>Password: 1234</p>
     </div>
 
-    <div ng-show="page === 'volunteers'">
+    
+    <div ng-hide="page === 'login'">
+
         <rescue-title></rescue-title>
         <h2>Volunteer Management — CRUD Operations</h2>
         <button class="secondary" ng-click="logout()">Logout</button>

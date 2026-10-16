@@ -1,5 +1,6 @@
 <!ELEMENT students (student+)>
-<!ELEMENT student (name, department, year)>
+<!ELEMENT student (name, department, year, mark)>
 <!ELEMENT name (#PCDATA)>
 <!ELEMENT department (#PCDATA)>
 <!ELEMENT year (#PCDATA)>
+<!ELEMENT mark (#PCDATA)>

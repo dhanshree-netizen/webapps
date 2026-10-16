@@ -1,4 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
+
 <xsl:stylesheet version="1.0"
     xmlns:xsl="http://www.w3.org/1999/XSL/Transform">
 
@@ -9,6 +10,7 @@
         <html>
         <head>
             <title>Student Details</title>
+
             <style>
                 body {
                     font-family: Arial, sans-serif;
@@ -39,7 +41,7 @@
 
         <body>
 
-            <h2>All Student Details</h2>
+            <h2>All Student Details (Sorted by Year)</h2>
 
             <table>
                 <tr>
@@ -49,26 +51,35 @@
                     <th>Mark</th>
                 </tr>
 
-                <xsl:for-each select="students/student">
+                <xsl:for-each select="/students/student">
 
                     <xsl:sort select="year"
                         data-type="number"
                         order="descending"/>
 
                     <xsl:sort select="name"
+                        data-type="text"
                         order="ascending"/>
 
                     <tr>
-                        <td><xsl:value-of select="name"/></td>
-                        <td><xsl:value-of select="department"/></td>
-                        <td><xsl:value-of select="year"/></td>
-                        <td><xsl:value-of select="mark"/></td>
+                        <td>
+                            <xsl:value-of select="name"/>
+                        </td>
+                        <td>
+                            <xsl:value-of select="department"/>
+                        </td>
+                        <td>
+                            <xsl:value-of select="year"/>
+                        </td>
+                        <td>
+                            <xsl:value-of select="mark"/>
+                        </td>
                     </tr>
 
                 </xsl:for-each>
             </table>
 
-            <h2>IT Department Students</h2>
+            <h2>IT Department Students (XPath Filter)</h2>
 
             <table>
                 <tr>
@@ -78,15 +89,25 @@
                     <th>Mark</th>
                 </tr>
 
-                <xsl:for-each select="students/student[department='IT']">
+                <xsl:for-each
+                    select="/students/student[department='IT']">
 
-                    <xsl:sort select="name" order="ascending"/>
+                    <xsl:sort select="name"
+                        order="ascending"/>
 
                     <tr>
-                        <td><xsl:value-of select="name"/></td>
-                        <td><xsl:value-of select="department"/></td>
-                        <td><xsl:value-of select="year"/></td>
-                        <td><xsl:value-of select="mark"/></td>
+                        <td>
+                            <xsl:value-of select="name"/>
+                        </td>
+                        <td>
+                            <xsl:value-of select="department"/>
+                        </td>
+                        <td>
+                            <xsl:value-of select="year"/>
+                        </td>
+                        <td>
+                            <xsl:value-of select="mark"/>
+                        </td>
                     </tr>
 
                 </xsl:for-each>

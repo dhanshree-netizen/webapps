@@ -1,29 +1,109 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE students SYSTEM "student.dtd">
-<?xml-stylesheet type="text/xsl" href="student.xsl"?>
-<students>
-    <student>
-        <name>Anu</name>
-        <department>IT</department>
-        <year>3</year>
-        <mark>85</mark>
-    </student>
-    <student>
-        <name>Banu</name>
-        <department>CSE</department>
-        <year>3</year>
-        <mark>90</mark>
-    </student>
-    <student>
-        <name>Charu</name>
-        <department>IT</department>
-        <year>2</year>
-        <mark>78</mark>
-    </student>
-    <student>
-        <name>Divya</name>
-        <department>ECE</department>
-        <year>4</year>
-        <mark>95</mark>
-    </student>
-</students>
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Student Details</title>
+
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 30px;
+            background-color: #f5f9ff;
+        }
+
+        h2 {
+            text-align: center;
+            color: #003366;
+        }
+
+        table {
+            border-collapse: collapse;
+            width: 80%;
+            margin: 20px auto 40px auto;
+            background-color: white;
+        }
+
+        th, td {
+            border: 2px solid black;
+            padding: 12px;
+            text-align: center;
+        }
+
+        th {
+            background-color: lightblue;
+        }
+
+        tr:nth-child(even) {
+            background-color: #eaf4ff;
+        }
+    </style>
+</head>
+
+<body>
+
+    <h2>All Student Details (Sorted by Year)</h2>
+
+    <table>
+        <tr>
+            <th>Name</th>
+            <th>Department</th>
+            <th>Year</th>
+            <th>Mark</th>
+        </tr>
+
+        <tr>
+            <td>Divya</td>
+            <td>ECE</td>
+            <td>4</td>
+            <td>95</td>
+        </tr>
+
+        <tr>
+            <td>Anu</td>
+            <td>IT</td>
+            <td>3</td>
+            <td>85</td>
+        </tr>
+
+        <tr>
+            <td>Banu</td>
+            <td>CSE</td>
+            <td>3</td>
+            <td>90</td>
+        </tr>
+
+        <tr>
+            <td>Charu</td>
+            <td>IT</td>
+            <td>2</td>
+            <td>78</td>
+        </tr>
+    </table>
+
+    <h2>IT Department Students (XPath Filter)</h2>
+
+    <table>
+        <tr>
+            <th>Name</th>
+            <th>Department</th>
+            <th>Year</th>
+            <th>Mark</th>
+        </tr>
+
+        <tr>
+            <td>Anu</td>
+            <td>IT</td>
+            <td>3</td>
+            <td>85</td>
+        </tr>
+
+        <tr>
+            <td>Charu</td>
+            <td>IT</td>
+            <td>2</td>
+            <td>78</td>
+        </tr>
+    </table>
+
+</body>
+</html>

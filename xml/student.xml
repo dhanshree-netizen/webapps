@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE students SYSTEM "student.dtd">
 <?xml-stylesheet type="text/xsl" href="student.xsl"?>
+
 <students>
     <student>
         <name>Anu</name>
@@ -8,18 +9,21 @@
         <year>3</year>
         <mark>85</mark>
     </student>
+
     <student>
         <name>Banu</name>
         <department>CSE</department>
         <year>3</year>
         <mark>90</mark>
     </student>
+
     <student>
         <name>Charu</name>
         <department>IT</department>
         <year>2</year>
         <mark>78</mark>
     </student>
+
     <student>
         <name>Divya</name>
         <department>ECE</department>

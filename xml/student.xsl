@@ -6,7 +6,6 @@
     <xsl:output method="html" indent="yes"/>
 
     <xsl:template match="/">
-
         <html>
         <head>
             <title>Student Details</title>
@@ -15,32 +14,39 @@
                 body {
                     font-family: Arial, sans-serif;
                     margin: 30px;
+                    background-color: #f5f9ff;
                 }
 
                 h2 {
                     text-align: center;
+                    color: #003366;
                 }
 
                 table {
                     border-collapse: collapse;
-                    width: 70%;
-                    margin: 20px auto;
+                    width: 80%;
+                    margin: 20px auto 40px auto;
+                    background-color: white;
                 }
 
                 th, td {
-                    border: 1px solid black;
-                    padding: 10px;
+                    border: 2px solid #333333;
+                    padding: 12px;
                     text-align: center;
                 }
 
                 th {
                     background-color: lightblue;
+                    color: black;
+                }
+
+                tr:nth-child(even) {
+                    background-color: #eaf4ff;
                 }
             </style>
         </head>
 
         <body>
-
             <h2>All Student Details (Sorted by Year)</h2>
 
             <table>
@@ -52,30 +58,17 @@
                 </tr>
 
                 <xsl:for-each select="/students/student">
-
                     <xsl:sort select="year"
-                        data-type="number"
-                        order="descending"/>
-
+                        data-type="number" order="descending"/>
                     <xsl:sort select="name"
-                        data-type="text"
-                        order="ascending"/>
+                        data-type="text" order="ascending"/>
 
                     <tr>
-                        <td>
-                            <xsl:value-of select="name"/>
-                        </td>
-                        <td>
-                            <xsl:value-of select="department"/>
-                        </td>
-                        <td>
-                            <xsl:value-of select="year"/>
-                        </td>
-                        <td>
-                            <xsl:value-of select="mark"/>
-                        </td>
+                        <td><xsl:value-of select="name"/></td>
+                        <td><xsl:value-of select="department"/></td>
+                        <td><xsl:value-of select="year"/></td>
+                        <td><xsl:value-of select="mark"/></td>
                     </tr>
-
                 </xsl:for-each>
             </table>
 
@@ -89,33 +82,20 @@
                     <th>Mark</th>
                 </tr>
 
-                <xsl:for-each
-                    select="/students/student[department='IT']">
-
+                <xsl:for-each select="/students/student[department='IT']">
                     <xsl:sort select="name"
-                        order="ascending"/>
+                        data-type="text" order="ascending"/>
 
                     <tr>
-                        <td>
-                            <xsl:value-of select="name"/>
-                        </td>
-                        <td>
-                            <xsl:value-of select="department"/>
-                        </td>
-                        <td>
-                            <xsl:value-of select="year"/>
-                        </td>
-                        <td>
-                            <xsl:value-of select="mark"/>
-                        </td>
+                        <td><xsl:value-of select="name"/></td>
+                        <td><xsl:value-of select="department"/></td>
+                        <td><xsl:value-of select="year"/></td>
+                        <td><xsl:value-of select="mark"/></td>
                     </tr>
-
                 </xsl:for-each>
             </table>
-
         </body>
         </html>
-
     </xsl:template>
 
 </xsl:stylesheet>
